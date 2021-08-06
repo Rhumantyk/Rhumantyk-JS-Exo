@@ -1,0 +1,35 @@
+body
+{
+    font-size: larger;
+}
+
+.Title
+{
+    margin: 20px;
+    font-weight: bold;
+    color: blue;
+}
+
+.Button
+{
+    margin: 20px 10px;
+    background-color: aqua;
+    border: thick solid 5;
+}
+
+.VehicleType
+{
+    font-weight: bold;
+}
+
+.VehicleTypePlane
+{
+    text-decoration: underline;
+    font-weight: normal;
+    color: red;
+}
+
+.VehicleTypeBike
+{
+    background-color: seagreen;
+}
