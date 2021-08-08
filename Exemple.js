@@ -105,7 +105,7 @@ function ShowVehicles()
     {
         MyList.innerHTML += MyVehicle.Display(false); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
         MyList.innerHTML += MyVehicle.GetStatus(); //
-        if (MyVehicle.Type == "Avion")
+        if (MyVehicle.Type == "Avion", "Voiture", "Moto")
         {
             MyVehicle.Demarrer();
             MyList.innerHTML += MyVehicle.GetStatus();
