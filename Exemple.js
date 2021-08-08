@@ -103,8 +103,7 @@ function ShowVehicles()
     MyList.innerHTML = ""; // MyList = C'est l'objet div. InnerHTML = Propriété représentant le contenu de l'objet div. Le "" supprime le texte dans l'HTML.
     for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicules.
     {
-        MyList.innerHTML += MyVehicle.Display(false); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
-        MyList.innerHTML += MyVehicle.GetStatus(); //
+        MyList.innerHTML += MyVehicle.Display(false) + MyVehicle.GetStatus(); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
         if (MyVehicle.Type == "Avion", "Voiture", "Moto")
         {
             MyVehicle.Demarrer();
