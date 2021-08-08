@@ -29,7 +29,7 @@ class Vehicle
             OnOff = "en route"; // Lorsque true
             JumpLine = "</br>";
         }
-        else 
+        else
         {
             OnOff = "à l'arrêt"; // Lorsque false
         }
@@ -48,7 +48,7 @@ class Vehicle
         this.TraveledDistance =+ this.Speed;
     }
 
-    Time() // Nombre de click effectué sur le bouton "Course"
+    Time() // Nombre de clic effectué sur le bouton "Course"
     {
         return time;
     }
@@ -57,26 +57,26 @@ class Vehicle
     Stop()
     {
         alert("Course terminée !");// Le placer ailleurs
-        // document.getElementById(onclick="Race();").disabled = true; // Pourquoi ça ne fontcionne pas ?
         this.isEngineOn = false;
         return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.Time() + " heure(s) " + "</br>"; // km et heures à détailler autrement
     }
 
     Display(isInRace = null) // Affiche la description d'un véhicule via strings
     {
-        let Description = "<span class='" + this.CSSClass + "'>" + this.Type + "</span> " + this.Color; // Le fait qu'il y ait "null", Desciption sera le seul utilisé
+        let JumpLineBis = "</br>";
+        let Description = "<span class='" + this.CSSClass + "'>" + this.Type + "</span> " + this.Color; // Le fait qu'il y ait "null", la variable Desciption sera la seule utilisée de toute la fonction
 
         if (isInRace != null && !isInRace)// ! = Not  [Tout comme : && (and), || (or) --> Opérateurs logiques]
         {
-            Description += " va à " + this.Speed + "km/h</br>"; // Affichage
+            Description += " va à " + this.Speed + "km/h"; // Affichage
         }
 
         else if (isInRace != null)
         {
-            Description += " a parcouru " + this.TraveledDistance + "km</br>"; // En course
+            Description += " a parcouru " + this.TraveledDistance + "km"; // En course
         }
         
-        return Description; // Return uniquement pour retourner un résultat quand méthode utilisée. Return stoppe le code anyway, s'effectue 1 fois.
+        return JumpLineBis += Description; // Return uniquement pour retourner un résultat quand méthode utilisée. Return stoppe le code anyway, s'effectue 1 fois.
     }
 }
 
@@ -100,11 +100,10 @@ function ShowVehicles()
 {
     alert("Début de la fonction d'affichage des " + Vehicles.length + " véhicules."); // Méthode de l'objet .window (raccourci)
     let MyList = document.getElementById("VehicleList"); // MyList est une variable contenant la page html. document = objet avec propriétés
-    MyList.innerHTML = ""; // MyList = C'est l'objet div. InnerHTML = Propriété représentant le contenu de l'objet div. Le "" supprime le texte dans l'HTML (ici, Liste vide).
-    for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicule.
+    MyList.innerHTML = ""; // MyList = C'est l'objet div. InnerHTML = Propriété représentant le contenu de l'objet div. Le "" supprime le texte dans l'HTML.
+    for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicules.
     {
-        MyList.innerHTML += MyVehicle.Display(false);
-            // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
+        MyList.innerHTML += MyVehicle.Display(false); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
         MyList.innerHTML += MyVehicle.GetStatus(); //
         if (MyVehicle.Type == "Avion")
         {
