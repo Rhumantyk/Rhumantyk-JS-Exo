@@ -53,7 +53,6 @@ class Vehicle
         return time;
     }
 
-
     Stop()
     {
         alert("Course terminée !");// Le placer ailleurs
@@ -127,7 +126,10 @@ function RaceVehiculesList()
 
 
 
-
+function Distance() // Ce qui va influer sur la distance à parcourir dans la condition "if" de function "Race".
+{
+    
+}
 
 let time = 0;
 
@@ -140,13 +142,15 @@ function Race()
     for(MyVehicle of Vehicles)
     {
         //Test
-        MyVehicle.TraveledDistance = MyVehicle.Speed*time; //Si le moteur est On. Orriginellement : MyVehicle.TraveledDistance = MyVehicle.Speed*time;
+        MyVehicle.TraveledDistance = MyVehicle.Speed*time; //Si le moteur est On.
         MyList.innerHTML += MyVehicle.Display(true);
 
-        if (MyVehicle.TraveledDistance >= 2000) // Originnellement : (MyVehicle.TraveledDistance >= 2000)
+        if (MyVehicle.TraveledDistance >= 2000) // MyVehicle.Distance() ------- 2000
         {
             MyList.innerHTML += MyVehicle.Stop();
         }
         //Test
     }
 }
+
+// Tableau à option formulaire pour le choix du nombre de km ?
