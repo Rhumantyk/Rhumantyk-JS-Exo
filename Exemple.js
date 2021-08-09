@@ -58,7 +58,7 @@ class Vehicle
     {
         alert("Course terminée !");// Le placer ailleurs
         this.isEngineOn = false;
-        return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.Time() + " heure(s) " + "</br>"; // km et heures à détailler autrement
+        return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.Time() + " heure(s) "; // km et heures à détailler autrement
     }
 
     Display(isInRace = null) // Affiche la description d'un véhicule via strings
