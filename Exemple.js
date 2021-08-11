@@ -1,13 +1,14 @@
 // classes
 class Vehicle
 {
-    constructor(P_Color, P_Speed, P_Type = "Voiture", P_TraveledDistance = 0) // Méthode + (paramètre/valeur, paramètre/valeur, ...)
+    constructor(P_Color, P_Speed, P_Type = "Voiture") // Méthode + (paramètre/valeur, paramètre/valeur, ...)
     {
         this.Type = P_Type; // .Type étant la propriété, P_Type étant sa valeur attribué
         this.Color = P_Color;
         this.Speed = P_Speed;
-        this.TraveledDistance = P_TraveledDistance;
+        this.TraveledDistance = 0;
         this.isEngineOn = false; // "is"(...) utilisé pour booléans
+        this.TotalTime = 0; // Temps total pour la course effectuée.
         this.CSSClass = "VehicleType";
 
         if (this.Type == "Avion") // Variation du style CSS de chaque véhicule
@@ -24,7 +25,7 @@ class Vehicle
     {
         let OnOff = null; // Variable qui n'a pas encore de valeur (vide).
         let JumpLine = "";
-        if (this.isEngineOn)// en l'occurence = true --> cf. Demarrer.
+        if (this.isEngineOn)// en l'occurence = true --> cf. Start.
         {
             OnOff = "en route"; // Lorsque true
             JumpLine = "</br>";
@@ -38,27 +39,27 @@ class Vehicle
     }
 
 
-    Demarrer() // Méthode (action donc) appliquée à un objet véhicule
+    Start() // Méthode (action donc) appliquée à un objet véhicule
     {
         this.isEngineOn = true;
     }
 
-    Avancer()
+    Move()
     {
         this.TraveledDistance =+ this.Speed;
-    }
-
-    Time() // Nombre de clic effectué sur le bouton "Course"
-    {
-        return time;
+        this.TraveledDistance =+ this.TotalTime;
     }
 
     Stop()
     {
-        alert("Course terminée !");// Le placer ailleurs
         this.isEngineOn = false;
-        return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.Time() + " heure(s) "; // km et heures à détailler autrement
+        return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.TotalTime + " heure(s) ";
     }
+
+    // Time() // Nombre de clic effectué sur le bouton "Course"
+    // {
+    //     return time;
+    // }
 
     Display(isInRace = null) // Affiche la description d'un véhicule via strings
     {
@@ -103,17 +104,28 @@ function ShowVehicles()
     for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicules.
     {
         MyList.innerHTML += MyVehicle.Display(false) + MyVehicle.GetStatus(); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
+        // if (MyVehicle.Type == "Avion", "Voiture", "Moto")
+        // {
+        //     MyVehicle.Start();
+        //     MyList.innerHTML += MyVehicle.GetStatus();
+        // }
+    }
+}
+
+function StartVehicles()
+{
+    MyList = document.getElementById("VehicleList");
+    MyList.innerHTML = "";
+    for (MyVehicle of Vehicles) // (MyVehicle.Type == "Avion", "Voiture", "Moto")
+    {
         if (MyVehicle.Type == "Avion", "Voiture", "Moto")
         {
-            MyVehicle.Demarrer();
+            MyVehicle.Start();
             MyList.innerHTML += MyVehicle.GetStatus();
         }
     }
 }
 
-// Essais course
-
-// Je veux utiliser les véhicules de VehiculeList
 function RaceVehiculesList()
 {
     MyList = document.getElementById("VehicleList");
@@ -124,33 +136,27 @@ function RaceVehiculesList()
     }
 }
 
-
-
-function Distance() // Ce qui va influer sur la distance à parcourir dans la condition "if" de function "Race".
-{
-    
-}
-
 let time = 0;
 
-function Race()
+function Race() // Utiliser alert là où il y en a besoin.
 {
     MyList = document.getElementById("VehicleList");
     MyList.innerHTML = "";
+    MyDistance = document.getElementById("Distance");
     time = time + 1; // time += 1 Ou encore time++
 
     for(MyVehicle of Vehicles)
     {
-        //Test
-        MyVehicle.TraveledDistance = MyVehicle.Speed*time; //Si le moteur est On.
+        if (MyVehicle.isEngineOn)
+        {
+            MyVehicle.Move();
+        }
+
         MyList.innerHTML += MyVehicle.Display(true);
 
-        if (MyVehicle.TraveledDistance >= 2000) // MyVehicle.Distance() ------- 2000
+        if (MyVehicle.TraveledDistance >= MyDistance.value)
         {
             MyList.innerHTML += MyVehicle.Stop();
         }
-        //Test
     }
 }
-
-// Tableau à option formulaire pour le choix du nombre de km ?
