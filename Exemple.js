@@ -84,7 +84,7 @@ class Vehicle
 // Début de code
 let Vehicles = [];
 
-function Start()
+function StartList()
 {
     let V1 = new Vehicle("blanc", 500, "Avion");
     let V2 = new Vehicle("rouge", 150);
@@ -104,11 +104,6 @@ function ShowVehicles()
     for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicules.
     {
         MyList.innerHTML += MyVehicle.Display(false) + MyVehicle.GetStatus(); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
-        // if (MyVehicle.Type == "Avion", "Voiture", "Moto")
-        // {
-        //     MyVehicle.Start();
-        //     MyList.innerHTML += MyVehicle.GetStatus();
-        // }
     }
 }
 
