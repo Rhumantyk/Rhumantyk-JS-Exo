@@ -46,8 +46,8 @@ class Vehicle
 
     Move()
     {
-        this.TraveledDistance =+ this.Speed;
-        this.TraveledDistance =+ this.TotalTime;
+        this.TotalTime = this.TotalTime + 1;
+        this.TraveledDistance = this.TotalTime * this.Speed;
     }
 
     Stop()
@@ -111,7 +111,7 @@ function StartVehicles()
 {
     MyList = document.getElementById("VehicleList");
     MyList.innerHTML = "";
-    for (MyVehicle of Vehicles) // (MyVehicle.Type == "Avion", "Voiture", "Moto")
+    for (MyVehicle of Vehicles)
     {
         if (MyVehicle.Type == "Avion", "Voiture", "Moto")
         {
