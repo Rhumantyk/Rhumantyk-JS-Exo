@@ -7,49 +7,58 @@
     </head>
     <body onload="StartList();">
 
-        <button class="Button" onclick="ShowVehicles();">
-            Afficher la liste de véhicules
-        </button>
+        <div id="RaceBoard">
+            <div class="RaceInformation">
+                <p class="TitleInformation">À tout instant</p>
+                    <div class="DivInformation">
+                        <button class="Button" onclick="ShowVehicles();">
+                            Afficher la liste de véhicules
+                        </button>
 
-        <button class="Button" onclick="TraveledKM();">
-            Afficher le nombre de km parcouru
-        </button>
-
-        <div>
-            <div class="Title">
-                Liste de véhicules:
+                        
+                        <div>
+                            <button class="Button" onclick="TraveledKM();">
+                                Afficher le nombre de km parcouru
+                            </button>
+                        </div>
+                    </div>
             </div>
 
-            <div id="VehicleList">
-                Liste vide (Cliquez sur un bouton)       
+            <div id="NoticeBoard">
+                <div class="NoticeBoardTitle">
+                    Tableau d'affichage
+                </div>
+
+                <div id="VehicleList">
+                    (Cliquez sur un des boutons)       
+                </div>
             </div>
+
+            <form method="post" action="traitement-un-de-ces-jours.php" id="DistanceForm"> <!-- get ou post ? -->
+                <p>
+                    <label for="distance">Distance à parcourir</label><br />
+                    <select name="distance" id="Distance">
+                        <option value="1000">1 000 km</option>
+                        <option value="2000">2 000 km</option>
+                        <option value="3000">3 000 km</option>
+                        <option value="4000">4 000 km</option>
+                        <option value="5000">5 000 km</option>
+                        <option value="6000" selected>6 000 km</option>
+                        <option value="7000">7 000 km</option>
+                        <option value="8000">8 000 km</option>
+                        <option value="9000">9 000 km</option>
+                        <option value="10000">10 000 km</option>
+                    </select>
+                </p>
+            </form>
+
+            <button class="Button" onclick="StartVehicles();">
+                Démarrer les véhicules
+            </button>
+
+            <button class="Button" id="ButtonRace" onclick="Race();"> <!--id="Race"-->
+                Course
+            </button>
         </div>
-
-
-        <button class="Button" onclick="StartVehicles();">
-            Démarrer les véhicules
-        </button>
-
-        <form method="post" action="traitement-un-de-ces-jours.php" id="DistanceForm"> <!-- get ou post ? -->
-            <p>
-                <label for="distance">Distance à parcourir</label><br />
-                <select name="distance" id="Distance">
-                    <option value="1000">1 000 km</option>
-                    <option value="2000">2 000 km</option>
-                    <option value="3000">3 000 km</option>
-                    <option value="4000">4 000 km</option>
-                    <option value="5000">5 000 km</option>
-                    <option value="6000" selected>6 000 km</option>
-                    <option value="7000">7 000 km</option>
-                    <option value="8000">8 000 km</option>
-                    <option value="9000">9 000 km</option>
-                    <option value="10000">10 000 km</option>
-                </select>
-            </p>
-        </form>
-
-        <button class="Button" id="ButtonRace" onclick="Race();"> <!--id="Race"-->
-            Course
-        </button>
     </body>
 </html>

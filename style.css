@@ -3,9 +3,48 @@ body
     font-size: larger;
 }
 
-/* div's Class & ID */
-.Title
+#RaceBoard
 {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: space-around;
+}
+
+/* div's Class & ID */
+.RaceInformation
+{
+    width: fit-content;
+    border: solid;
+    border-color: black;
+    margin-bottom: 20px;
+}
+
+.TitleInformation
+{
+    display: flex;
+    justify-content: space-around;
+}
+
+.DivInformation
+{
+    display: flex;
+    align-items: flex-end;
+    flex-direction: row;
+}
+
+#NoticeBoard
+{
+    width: fit-content;
+    border: solid;
+    border-color: black;
+}
+
+.NoticeBoardTitle
+{
+    display: flex;
+    justify-content: center;
     margin: 20px;
     font-weight: bold;
     color: blue;
@@ -14,11 +53,15 @@ body
 #VehicleList
 {
     margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 30px;
 }
 
-#DistanceForm
+#DistanceForm p
 {
-    margin-left: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 /* Buttons */
