@@ -17,6 +17,13 @@ body
     border: thick solid 5;
 }
 
+.ButtonOff
+{
+    margin: 20px 10px;
+    background-color: red;
+    border: thick solid 5;
+}
+
 .VehicleType
 {
     font-weight: bold;

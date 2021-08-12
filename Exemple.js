@@ -53,13 +53,8 @@ class Vehicle
     Stop()
     {
         this.isEngineOn = false;
-        return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.TotalTime + " heure(s) ";
+        return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.TotalTime + " heure(s) " + "</br>";
     }
-
-    // Time() // Nombre de clic effectué sur le bouton "Course"
-    // {
-    //     return time;
-    // }
 
     Display(isInRace = null) // Affiche la description d'un véhicule via strings
     {
@@ -80,8 +75,6 @@ class Vehicle
     }
 }
 
-
-// Début de code
 let Vehicles = [];
 
 function StartList()
@@ -94,7 +87,6 @@ function StartList()
     Vehicles.push(new Vehicle("rouge", 600, "Avion"));
     Vehicles.push(new Vehicle("jaune", 200, "Moto"));
 }
-
 
 function ShowVehicles()
 {
@@ -131,18 +123,18 @@ function RaceVehiculesList()
     }
 }
 
-let time = 0;
+// let time = 0;
 
-function Race() // Utiliser alert là où il y en a besoin.
+function Race()
 {
     MyList = document.getElementById("VehicleList");
     MyList.innerHTML = "";
     MyDistance = document.getElementById("Distance");
-    time = time + 1; // time += 1 Ou encore time++
+    // time = time + 1; // time += 1 Ou encore time++
 
     for(MyVehicle of Vehicles)
     {
-        if (MyVehicle.isEngineOn)
+        if (MyVehicle.isEngineOn) // Ici True, puisque moteur on grâce à StartVehicles() 
         {
             MyVehicle.Move();
         }
@@ -152,6 +144,22 @@ function Race() // Utiliser alert là où il y en a besoin.
         if (MyVehicle.TraveledDistance >= MyDistance.value)
         {
             MyList.innerHTML += MyVehicle.Stop();
+        }
+    }
+}
+
+function ButtonClass() // Pourquoi ça ne fonctionne pas ?
+{
+    MyList = document.getElementById("ButtonRace");
+    for(MyVehicle of Vehicles)
+    {
+        if (MyVehicle.isEngineOn = true)
+        {
+            document.getElementById("ButtonRace").className = "Button";
+        }
+        else (MyVehicle.isEngineOn = false)
+        {
+            document.getElementById("ButtonRace").className = "ButtonOff";
         }
     }
 }
