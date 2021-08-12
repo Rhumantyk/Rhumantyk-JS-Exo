@@ -38,24 +38,6 @@ class Vehicle
         return this.Display() + ", le véhicule est " + OnOff + JumpLine;
     }
 
-
-    Start() // Méthode (action donc) appliquée à un objet véhicule
-    {
-        this.isEngineOn = true;
-    }
-
-    Move()
-    {
-        this.TotalTime = this.TotalTime + 1;
-        this.TraveledDistance = this.TotalTime * this.Speed;
-    }
-
-    Stop()
-    {
-        this.isEngineOn = false;
-        return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.TotalTime + " heure(s) " + "</br>";
-    }
-
     Display(isInRace = null) // Affiche la description d'un véhicule via strings
     {
         let JumpLineBis = "</br>";
@@ -72,6 +54,24 @@ class Vehicle
         }
         
         return JumpLineBis += Description; // Return uniquement pour retourner un résultat quand méthode utilisée. Return stoppe le code anyway, s'effectue 1 fois.
+    }
+
+
+    Start() // Méthode (action donc) appliquée à un objet véhicule
+    {
+        this.isEngineOn = true;
+    }
+
+    Move()
+    {
+        this.TotalTime = this.TotalTime + 1;
+        this.TraveledDistance = this.TotalTime * this.Speed;
+    }
+
+    Stop()
+    {
+        this.isEngineOn = false;
+        return this.GetStatus() + ", et a parcouru : " + this.TraveledDistance + "km en " + this.TotalTime + " heure(s) " + "</br>";
     }
 }
 
@@ -99,7 +99,7 @@ function ShowVehicles()
     }
 }
 
-function TraveledKM()
+function TraveledKm()
 {
     MyList = document.getElementById("VehicleList");
     MyList.innerHTML = "";
@@ -145,6 +145,7 @@ function Race()
     }
 }
 
+// Tentative changement de classe CSS btn
 function ButtonClass() // Pourquoi ça ne fonctionne pas ?
 {
     MyList = document.getElementById("ButtonRace");
