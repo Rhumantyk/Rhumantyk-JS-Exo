@@ -3,6 +3,7 @@ body
     font-size: larger;
 }
 
+/* div's Class & ID */
 .Title
 {
     margin: 20px;
@@ -10,6 +11,17 @@ body
     color: blue;
 }
 
+#VehicleList
+{
+    margin-left: 20px;
+}
+
+#DistanceForm
+{
+    margin-left: 20px;
+}
+
+/* Buttons */
 .Button
 {
     margin: 20px 10px;
@@ -24,6 +36,7 @@ body
     border: thick solid 5;
 }
 
+/* Vehicles CSS */
 .VehicleType
 {
     font-weight: bold;

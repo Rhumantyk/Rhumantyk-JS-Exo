@@ -1,4 +1,4 @@
-// classes
+// classe
 class Vehicle
 {
     constructor(P_Color, P_Speed, P_Type = "Voiture") // Méthode + (paramètre/valeur, paramètre/valeur, ...)
@@ -99,6 +99,16 @@ function ShowVehicles()
     }
 }
 
+function TraveledKM()
+{
+    MyList = document.getElementById("VehicleList");
+    MyList.innerHTML = "";
+    for(MyVehicle of Vehicles)
+    {
+        MyList.innerHTML += MyVehicle.Display(true);
+    }
+}
+
 function StartVehicles()
 {
     MyList = document.getElementById("VehicleList");
@@ -113,24 +123,11 @@ function StartVehicles()
     }
 }
 
-function RaceVehiculesList()
-{
-    MyList = document.getElementById("VehicleList");
-    MyList.innerHTML = "";
-    for(MyVehicle of Vehicles)
-    {
-        MyList.innerHTML += MyVehicle.Display(true);
-    }
-}
-
-// let time = 0;
-
 function Race()
 {
     MyList = document.getElementById("VehicleList");
     MyList.innerHTML = "";
     MyDistance = document.getElementById("Distance");
-    // time = time + 1; // time += 1 Ou encore time++
 
     for(MyVehicle of Vehicles)
     {

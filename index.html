@@ -11,25 +11,26 @@
             Afficher la liste de véhicules
         </button>
 
-        <button class="Button" onclick="RaceVehiculesList();">
+        <button class="Button" onclick="TraveledKM();">
             Afficher le nombre de km parcouru
         </button>
 
-        <div class="Title">
-            Liste de véhicules:
-        </div>
+        <div>
+            <div class="Title">
+                Liste de véhicules:
+            </div>
 
-        <div id="VehicleList">
-            Liste vide         
+            <div id="VehicleList">
+                Liste vide         
+            </div>
         </div>
-
 
 
         <button class="Button" onclick="StartVehicles();">
             Démarrer les véhicules
         </button>
 
-        <form method="post" action="traitement-un-de-ces-jours.php"> <!-- get ou post ? -->
+        <form method="post" action="traitement-un-de-ces-jours.php" id="DistanceForm"> <!-- get ou post ? -->
             <p>
                 <label for="distance">Distance à parcourir</label><br />
                 <select name="distance" id="Distance">
