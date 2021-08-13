@@ -68,8 +68,9 @@ body
 #Track
 {
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 500px;
     background-color: thistle;
     border: solid;
     border-color: black;
@@ -77,6 +78,14 @@ body
 }
 
 /* Logo CSS */
+.fas
+{
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+}
+
 .fas:nth-child(1)
 {
     color: white;
@@ -108,6 +117,17 @@ body
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+/* StartRace div */
+#StartRace
+{
+    margin-left: -39.2px;
+}
+
+#StartRace i
+{
+    color: black;
 }
 
 /* Buttons */

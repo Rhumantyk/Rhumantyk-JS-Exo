@@ -149,23 +149,25 @@ function Race()
 // Tentative changement de classe CSS btn
 function ButtonClass() // Pourquoi ça ne fonctionne pas ?
 {
-    MyList = document.getElementById("ButtonRace");
+    MyList = document.getElementsByClassName("Button");
     for(MyVehicle of Vehicles)
     {
         if (MyVehicle.isEngineOn = true)
         {
-            document.getElementById("ButtonRace").className = "Button";
+            document.getElementsByClassName("Button").className = "Button";
         }
         else (MyVehicle.isEngineOn = false)
         {
-            document.getElementById("ButtonRace").className = "ButtonOff";
+            document.getElementsByClassName("Button").className = "ButtonOff";
         }
     }
 }
 
 
 // Tentative création de piste
-function Track() // Piste
+let TraveledTrack = 0;
+function Track()
 {
-
+    TraveledTrack += 50;
+    document.getElementsByClassName("fas").style.left = DistanceTrack + "px";
 }
