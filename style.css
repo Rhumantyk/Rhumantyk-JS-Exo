@@ -70,9 +70,36 @@ body
     display: flex;
     flex-direction: row;
     align-items: center;
+    background-color: thistle;
     border: solid;
     border-color: black;
     margin-left: 20px;
+}
+
+/* Logo CSS */
+.fas:nth-child(1)
+{
+    color: white;
+}
+
+.fas:nth-child(2)
+{
+    color: red;
+}
+
+.fas:nth-child(3)
+{
+    color: green;
+}
+
+.fas:nth-child(4)
+{
+    color: red;
+}
+
+.fas:nth-child(5)
+{
+    color: yellow;
 }
 
 /* Form */
