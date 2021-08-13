@@ -166,8 +166,15 @@ function ButtonClass() // Pourquoi ça ne fonctionne pas ?
 
 // Tentative création de piste
 let TraveledTrack = 0;
+
+// 1000km = 20px
 function Track()
 {
-    TraveledTrack += 50;
-    document.getElementsByClassName("fas").style.left = DistanceTrack + "px";
+    MyList = document.getElementById("Track");
+    TraveledTrack += 20;
+
+        for(MyVehicle of Vehicles)
+        {
+            document.getElementsByClassName("fas").style.left = MyList.fas += TraveledTrack + "px";
+        }
 }
