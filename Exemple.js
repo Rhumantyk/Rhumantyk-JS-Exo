@@ -145,6 +145,7 @@ function Race()
     }
 }
 
+
 // Tentative changement de classe CSS btn
 function ButtonClass() // Pourquoi ça ne fonctionne pas ?
 {
@@ -160,4 +161,11 @@ function ButtonClass() // Pourquoi ça ne fonctionne pas ?
             document.getElementById("ButtonRace").className = "ButtonOff";
         }
     }
+}
+
+
+// Tentative création de piste
+function Track() // Piste
+{
+
 }
