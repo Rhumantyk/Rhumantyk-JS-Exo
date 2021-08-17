@@ -187,19 +187,19 @@ function ChangeButtonAccessibility(Id, Status)
 
 
 // Tentative création de piste
-let TraveledTrack = 0;
+// let TraveledTrack = 0;
 
 function Track()
 {
-    Mylist = document.getElementById("Track").style.position = 'relative';
-    TraveledTrack += 20;
+    // Mylist = document.getElementById("Track").style.position = 'relative';
+    // TraveledTrack += 20;
 
-        for(MyVehicle of Vehicles)
-        {
-            document.getElementsByClassName("fas").style.left = MyList.fas += TraveledTrack + "px";
-        }
+    //     for(MyVehicle of Vehicles)
+    //     {
+    //         document.getElementsByClassName("fas").style.left = MyList.fas += TraveledTrack + "px";
+    //     }
 
-    // Pour bouger véhicules
+    // Pour bouger véhicules. En lien avec la class Relative.
     let Element = document.getElementById("Track");
     ButtonPosition += 10;
     Element.style.left = ButtonPosition + "px";
