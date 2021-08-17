@@ -14,23 +14,19 @@ class Vehicle
         if (this.Type == "Avion") // Variation du style CSS de chaque véhicule
         {
             this.CSSClass = "VehicleTypePlane";
+            this.Symbol = "plane";
         }
         else if (this.Type == "Moto")
         {
             this.CSSClass = "VehicleTypeBike";
+            this.Symbol = "motorcycle";
         }
-
-        this.BtnClass = "Button";
-
-        if (this.isEngineOn = false)
+        else if (this.Type == "Voiture")
         {
-            this.BtnClass = "ButtonOff";
+            this.CSSClass = "VehicleTypeCar";
+            this.Symbol = "car-side";
         }
 
-        else (this.isEngineOn)
-        {
-            this.BtnClass = "Button";
-        }
     }
 
     GetStatus()
@@ -89,8 +85,10 @@ class Vehicle
 
 let Vehicles = [];
 
-function StartList()
+function Start()
 {
+    ChangeButtonAccessibility("Race", "Off");
+
     let V1 = new Vehicle("blanc", 500, "Avion");
     let V2 = new Vehicle("rouge", 150);
     Vehicles.push(V1);
@@ -100,15 +98,25 @@ function StartList()
     Vehicles.push(new Vehicle("jaune", 200, "Moto"));
 }
 
+let ButtonPosition = 0;
+
 function ShowVehicles()
 {
     // alert("Début de la fonction d'affichage des " + Vehicles.length + " véhicules."); // Méthode de l'objet .window (raccourci)
     let MyList = document.getElementById("VehicleList"); // MyList est une variable contenant la page html. document = objet avec propriétés
+    let MyTrack = document.getElementById("Track"); // MyList est une variable contenant la page html. document = objet avec propriétés
+    MyTrack.innerHTML = "";
     MyList.innerHTML = ""; // MyList = C'est l'objet div. InnerHTML = Propriété représentant le contenu de l'objet div. Le "" supprime le texte dans l'HTML.
     for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicules.
     {
         MyList.innerHTML += MyVehicle.Display(false) + MyVehicle.GetStatus(); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
+        MyTrack.innerHTML += "<i class='fas fa-" + MyVehicle.Symbol + "'></i></br>"; // Ajoute dynamiquement les véhicules.
     }
+
+    // // Pour bouger véhicules
+    // let Element = document.getElementById("Start");
+    // ButtonPosition += 10;
+    // Element.style.left = ButtonPosition + "px";
 }
 
 function TraveledKm()
@@ -123,6 +131,9 @@ function TraveledKm()
 
 function StartVehicles()
 {
+    ChangeButtonAccessibility("Race", "On");
+    ChangeButtonAccessibility("Start", "Off"); // L'ordre importe peu
+
     MyList = document.getElementById("VehicleList");
     MyList.innerHTML = "";
     for (MyVehicle of Vehicles)
@@ -158,20 +169,19 @@ function Race()
 }
 
 
-// Tentative changement de classe CSS btn
-function ButtonClass()
+// Changement de classe CSS btn
+function ChangeButtonAccessibility(Id, Status)
 {
-    MyList = document.getElementsByClassName("Button");
-    for(MyVehicle of Vehicles)
+    MyButton = document.getElementById(Id);
+    if (Status == "On")
     {
-        if (MyVehicle.BtnClass = true)
-        {
-            document.getElementsByClassName("Button").className = "Button";
-        }
-        if (MyVehicle.BtnClass = false)
-        {
-            document.getElementsByClassName("Button").className = "ButtonOff";
-        }
+        MyButton.classList.remove("ButtonOff");
+        MyButton.disabled = false;
+    }
+    else if (Status == "Off")
+    {
+        MyButton.classList.add("ButtonOff");
+        MyButton.disabled = true;
     }
 }
 
@@ -179,15 +189,18 @@ function ButtonClass()
 // Tentative création de piste
 let TraveledTrack = 0;
 
-
-// 1000km = 20px
 function Track()
 {
-    Mylist = document.getElementsById("Track").style.position = 'relative';
+    Mylist = document.getElementById("Track").style.position = 'relative';
     TraveledTrack += 20;
 
         for(MyVehicle of Vehicles)
         {
             document.getElementsByClassName("fas").style.left = MyList.fas += TraveledTrack + "px";
         }
+
+    // Pour bouger véhicules
+    let Element = document.getElementById("Track");
+    ButtonPosition += 10;
+    Element.style.left = ButtonPosition + "px";
 }

@@ -6,7 +6,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
         <script src="Exemple.js"></script>
     </head>
-    <body onload="StartList();">
+    <body onload="Start();">
 
         <div id="RaceBoard">
             <div class="RaceInformation">
@@ -36,12 +36,12 @@
                     </div>
                 </div>
 
-                <div id="Track">
-                    <i class="fas fa-plane"></i>
+                <div id="Track" class="Relative">
+                    <!-- <i class="fas fa-plane"></i>
                     <i class="fas fa-car-side"></i>
                     <i class="fas fa-car-side"></i>
                     <i class="fas fa-plane"></i>
-                    <i class="fas fa-motorcycle"></i>
+                    <i class="fas fa-motorcycle"></i> -->
                 </div>
             </div>
 
@@ -65,12 +65,12 @@
 
             <div id="StartRace">
                 <i class="fas fa-key"></i>
-                <button class="Button" onclick="StartVehicles();">
+                <button id="Start" class="Button Relative" onclick="StartVehicles();">
                     Démarrer les véhicules
                 </button>
             </div>
 
-            <button class="Button" onclick="Race(); Track();">
+            <button id="Race" class="Button" onclick="Race(); Track();">
                 Course
             </button>
         </div>

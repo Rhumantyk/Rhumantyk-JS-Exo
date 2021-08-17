@@ -67,9 +67,9 @@ body
 
 #Track
 {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* justify-content: space-around; */
     width: 500px;
     background-color: thistle;
     border: solid;
@@ -140,9 +140,14 @@ body
 
 .ButtonOff
 {
-    margin: 20px 10px;
-    background-color: red;
-    border: thick solid 5;
+    background-color: rgb(168, 112, 112);
+}
+
+/* Pour bouger véhicules */
+.Relative
+{
+    position: relative;
+    left: 0px;
 }
 
 /* Vehicles CSS */
