@@ -19,6 +19,18 @@ class Vehicle
         {
             this.CSSClass = "VehicleTypeBike";
         }
+
+        this.BtnClass = "Button";
+
+        if (this.isEngineOn = false)
+        {
+            this.BtnClass = "ButtonOff";
+        }
+
+        else (this.isEngineOn)
+        {
+            this.BtnClass = "Button";
+        }
     }
 
     GetStatus()
@@ -147,16 +159,16 @@ function Race()
 
 
 // Tentative changement de classe CSS btn
-function ButtonClass() // Pourquoi ça ne fonctionne pas ?
+function ButtonClass()
 {
     MyList = document.getElementsByClassName("Button");
     for(MyVehicle of Vehicles)
     {
-        if (MyVehicle.isEngineOn = true)
+        if (MyVehicle.BtnClass = true)
         {
             document.getElementsByClassName("Button").className = "Button";
         }
-        else (MyVehicle.isEngineOn = false)
+        if (MyVehicle.BtnClass = false)
         {
             document.getElementsByClassName("Button").className = "ButtonOff";
         }
@@ -167,10 +179,11 @@ function ButtonClass() // Pourquoi ça ne fonctionne pas ?
 // Tentative création de piste
 let TraveledTrack = 0;
 
+
 // 1000km = 20px
 function Track()
 {
-    MyList = document.getElementById("Track");
+    Mylist = document.getElementsById("Track").style.position = 'relative';
     TraveledTrack += 20;
 
         for(MyVehicle of Vehicles)
