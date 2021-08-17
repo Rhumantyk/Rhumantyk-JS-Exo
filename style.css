@@ -143,7 +143,7 @@ body
     background-color: rgb(168, 112, 112);
 }
 
-/* Pour bouger les véhicules (à l'origine un bouton)  */
+/* Pour bouger les véhicules avec .fas (à l'origine un bouton dans function ShowVehicle())  */
 .Relative
 {
     position: relative;
@@ -151,8 +151,9 @@ body
 }
 
 /* Vehicles CSS */
-.VehicleType
+.VehicleTypeCar
 {
+    color: black;
     font-weight: bold;
 }
 

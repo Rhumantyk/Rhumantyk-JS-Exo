@@ -98,13 +98,11 @@ function Start()
     Vehicles.push(new Vehicle("jaune", 200, "Moto"));
 }
 
-let ButtonPosition = 0;
-
 function ShowVehicles()
 {
     // alert("Début de la fonction d'affichage des " + Vehicles.length + " véhicules."); // Méthode de l'objet .window (raccourci)
     let MyList = document.getElementById("VehicleList"); // MyList est une variable contenant la page html. document = objet avec propriétés
-    let MyTrack = document.getElementById("Track"); // MyList est une variable contenant la page html. document = objet avec propriétés
+    let MyTrack = document.getElementById("Track");
     MyTrack.innerHTML = "";
     MyList.innerHTML = ""; // MyList = C'est l'objet div. InnerHTML = Propriété représentant le contenu de l'objet div. Le "" supprime le texte dans l'HTML.
     for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicules.
@@ -113,10 +111,10 @@ function ShowVehicles()
         MyTrack.innerHTML += "<i class='fas fa-" + MyVehicle.Symbol + "'></i></br>"; // Ajoute dynamiquement les véhicules.
     }
 
-    // // Pour bouger véhicules
-    // let Element = document.getElementById("Start");
-    // ButtonPosition += 10;
-    // Element.style.left = ButtonPosition + "px";
+    // Pour bouger véhicules. Ajout de .Relative si besoin, dans l'html
+    let Element = document.getElementById("Start");
+    VehiclePosition += 10;
+    Element.style.left = VehiclePosition + "px";
 }
 
 function TraveledKm()
@@ -187,20 +185,24 @@ function ChangeButtonAccessibility(Id, Status)
 
 
 // Tentative création de piste
-// let TraveledTrack = 0;
 
+let VehiclePosition = 0;
 function Track()
 {
     // Mylist = document.getElementById("Track").style.position = 'relative';
-    // TraveledTrack += 20;
 
-    //     for(MyVehicle of Vehicles)
-    //     {
-    //         document.getElementsByClassName("fas").style.left = MyList.fas += TraveledTrack + "px";
-    //     }
+    // Pour bouger véhicules. En lien direct avec la class Relative.
+    let Element = document.getElementsByClassName("fas"); // Originellement : let Element = document.getElementById("Track")
+    // MyFas = document.getElementsByClassName("fas");
+    // Element.classList.add("Relative");
+    
 
-    // Pour bouger véhicules. En lien avec la class Relative.
-    let Element = document.getElementById("Track");
-    ButtonPosition += 10;
-    Element.style.left = ButtonPosition + "px";
+
+        VehiclePosition += 60;
+        Element.style.left = VehiclePosition + "px";
+        // if (MyVehicle.Symbol == plane & MyVehicle.Speed == 600)
+        // {
+        //     VehiclePosition += 60;
+        //     Element.style.left = VehiclePosition + "px";
+        // }
 }
