@@ -67,9 +67,6 @@ body
 
 #Track
 {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: space-around; */
     width: 500px;
     background-color: thistle;
     border: solid;

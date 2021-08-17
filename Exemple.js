@@ -111,7 +111,7 @@ function ShowVehicles()
         MyTrack.innerHTML += "<i class='fas fa-" + MyVehicle.Symbol + "'></i></br>"; // Ajoute dynamiquement les véhicules.
     }
 
-    // Pour bouger véhicules. Ajout de .Relative si besoin, dans l'html
+    // Pour bouger véhicules. Ajout de .Relative dans l'html
     let Element = document.getElementById("Start");
     VehiclePosition += 10;
     Element.style.left = VehiclePosition + "px";
@@ -186,23 +186,51 @@ function ChangeButtonAccessibility(Id, Status)
 
 // Tentative création de piste
 
-let VehiclePosition = 0;
-function Track()
-{
-    // Mylist = document.getElementById("Track").style.position = 'relative';
+// let VehiclePosition = 0;
+// function Track()
+// {
+//     // Mylist = document.getElementById("Track").style.position = 'relative';
 
-    // Pour bouger véhicules. En lien direct avec la class Relative.
-    let Element = document.getElementsByClassName("fas"); // Originellement : let Element = document.getElementById("Track")
-    // MyFas = document.getElementsByClassName("fas");
-    // Element.classList.add("Relative");
+//     // Pour bouger véhicules. En lien direct avec la class Relative.
+//     let Element = document.getElementById("Track");
+//     let MyFas = document.getElementsByClassName("fas");
     
 
+//         for (MyFas of Vehicles)
+//         {
+//             // MyFas = document.getElementsByClassName("fas");
+//             // MyFas.classList.add("Relative");
+//             // if (MyVehicle.Symbol === "plane") // & MyVehicle.Speed == 600
+//             // {
+//                 VehiclePosition += 60;
+//                 Element.style.left = VehiclePosition + "px";
+//             // }
+//         }
+// }
 
+// let VehiclePosition = 0; // Cette fonction fait bouger la div Track sans faire disparaître les Symbols.
+// function Track()
+// {
+//     let Element = document.getElementById("Track");
+//     let MyFas = document.getElementsByClassName("fas");
+
+//     for (MyFas of Vehicles)
+//     {
+//             VehiclePosition += 60;
+//             Element.style.left = VehiclePosition + "px";
+//     }
+// }
+
+let VehiclePosition = 0; // Cette fonction ne fait rien.
+function Track()
+{
+    let Element = document.getElementById("Track");
+    let MyFas = document.getElementsByClassName("fas");
+    // MyFas.classList.add("Relative");
+
+    for (MyFas of Vehicles)
+    {
         VehiclePosition += 60;
-        Element.style.left = VehiclePosition + "px";
-        // if (MyVehicle.Symbol == plane & MyVehicle.Speed == 600)
-        // {
-        //     VehiclePosition += 60;
-        //     Element.style.left = VehiclePosition + "px";
-        // }
+        MyFas.style.left = VehiclePosition + "px";
+    }
 }
