@@ -130,7 +130,7 @@ function TraveledKm()
 function StartVehicles()
 {
     ChangeButtonAccessibility("Race", "On");
-    ChangeButtonAccessibility("Start", "Off"); // L'ordre importe peu
+    ChangeButtonAccessibility("Start", "Off"); // L'ordre (sauf entre ()) importe peu
 
     MyList = document.getElementById("VehicleList");
     MyList.innerHTML = "";
@@ -224,11 +224,26 @@ function ChangeButtonAccessibility(Id, Status)
 let VehiclePosition = 0; // Cette fonction ne fait rien.
 function Track()
 {
-    let Element = document.getElementById("Track");
-    let MyFas = document.getElementsByClassName("fas");
-    // MyFas.classList.add("Relative");
+    // let Element = document.getElementById("Track");
+    let MyFas = document.getElementsByClassName("fas"); // [0,1,2,3]; / [0]; ou bien rien ?
+    // document.getElementsByClassName(".fas").style.left = "50px";
 
-    for (MyFas of Vehicles)
+    // for (MyFas of Vehicles)
+    // {
+    //     VehiclePosition += 60;
+    //     MyFas.style.left = VehiclePosition + "px";
+    // }
+
+    // for (MyFas of Vehicles)
+    // {
+    // if (MyVehicle.Symbol == "plane") // & MyVehicle.Speed == 600
+    //     {
+    //         VehiclePosition += 60;
+    //         MyFas.style.left = VehiclePosition + "px";
+    //     }
+    // }
+
+    for(var i=0, len=MyFas.length; i<len; i++)
     {
         VehiclePosition += 60;
         MyFas.style.left = VehiclePosition + "px";
