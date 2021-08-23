@@ -208,24 +208,29 @@ function ChangeButtonAccessibility(Id, Status)
 //         }
 // }
 
-// let VehiclePosition = 0; // Cette fonction fait bouger la div Track sans faire disparaître les Symbols.
-// function Track()
-// {
-//     let Element = document.getElementById("Track");
-//     let MyFas = document.getElementsByClassName("fas");
-
-//     for (MyFas of Vehicles)
-//     {
-//             VehiclePosition += 60;
-//             Element.style.left = VehiclePosition + "px";
-//     }
-// }
-
-let VehiclePosition = 0; // Cette fonction ne fait rien.
+let VehiclePosition = 0; // Cette fonction fait bouger la div "Track" sans faire disparaître les Symbols.
 function Track()
 {
+    let Element = document.getElementById("Track");
+    let MyFas = document.getElementsByClassName("fas");
+
+    for (MyFas of Vehicles)
+    {
+        VehiclePosition += 60;
+        Element.style.left = VehiclePosition + "px";
+    }
+}
+
+
+
+
+
+
+// let VehiclePosition = 0; // Cette fonction ne fait rien.
+// function Track()
+// {
     // let Element = document.getElementById("Track");
-    let MyFas = document.getElementsByClassName("fas"); // [0,1,2,3]; / [0]; ou bien rien ?
+    // let MyFas = document.getElementsByClassName("fas"); // [0,1,2,3]; / [0]; ou bien rien ?
     // document.getElementsByClassName(".fas").style.left = "50px";
 
     // for (MyFas of Vehicles)
@@ -242,10 +247,4 @@ function Track()
     //         MyFas.style.left = VehiclePosition + "px";
     //     }
     // }
-
-    for(var i=0, len=MyFas.length; i<len; i++)
-    {
-        VehiclePosition += 60;
-        MyFas.style.left = VehiclePosition + "px";
-    }
-}
+// }
