@@ -250,12 +250,14 @@ function Track()
 
 
     //Tentaive avec element.children
-    let Myfas = document.getElementsByClassName("fas");
+    // let Myfas = document.getElementsByClassName("fas");
+    let Myfas = document.querySelector(".fas");
 
     for(Myfas.children of Vehicles)
     {
-        alert(Myfas.children) // Affiche [object Object] --> càd ?
-        VehiclePosition += 60;
+        // alert(Myfas.children) // Affiche [object Object]
+        // alert(JSON.stringify(Myfas.children)); // Décrit l'objet en question
+        VehiclePosition += 6;
         Myfas.style.left = VehiclePosition +"px";
     }
 }
