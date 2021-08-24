@@ -1,8 +1,15 @@
+// Variables globales
+let Vehicles = [];
+let RaceLength = 0;
+let PixelByKm = 0;
+const TrackDelta = 60;
+
 // classe
 class Vehicle
 {
     constructor(P_Color, P_Speed, P_Type = "Voiture") // Méthode + (paramètre/valeur, paramètre/valeur, ...)
     {
+        this.Id = Vehicles.length + 1; // Création d'Id pour les véhicules. length étant égal à 0 à l'origine.
         this.Type = P_Type; // .Type étant la propriété, P_Type étant sa valeur attribué
         this.Color = P_Color;
         this.Speed = P_Speed;
@@ -27,6 +34,7 @@ class Vehicle
             this.Symbol = "car-side";
         }
 
+        Vehicles.push(this); // Objet que l'on crée (avec ses propriétés). En lien avec la function Start.
     }
 
     GetStatus()
@@ -49,7 +57,7 @@ class Vehicle
     Display(isInRace = null) // Affiche la description d'un véhicule via strings
     {
         let JumpLineBis = "</br>";
-        let Description = "<span class='" + this.CSSClass + "'>" + this.Type + "</span> " + this.Color; // Le fait qu'il y ait "null", la variable Desciption sera la seule utilisée de toute la fonction
+        let Description = this.Id + ") <span class='" + this.CSSClass + "'>" + this.Type + "</span> " + this.Color; // Le fait qu'il y ait "null", la variable Desciption sera la seule utilisée de toute la fonction
 
         if (isInRace != null && !isInRace)// ! = Not  [Tout comme : && (and), || (or) --> Opérateurs logiques]
         {
@@ -83,19 +91,19 @@ class Vehicle
     }
 }
 
-let Vehicles = [];
 
-function Start()
+function Start() // Cf. let vehicles
 {
     ChangeButtonAccessibility("Race", "Off");
 
-    let V1 = new Vehicle("blanc", 500, "Avion");
-    let V2 = new Vehicle("rouge", 150);
-    Vehicles.push(V1);
-    Vehicles.push(V2);
-    Vehicles.push(new Vehicle("vert", 130));
-    Vehicles.push(new Vehicle("rouge", 600, "Avion"));
-    Vehicles.push(new Vehicle("jaune", 200, "Moto"));
+    // let V1 = new Vehicle("blanc", 500, "Avion");
+    // Vehicles.push(new Vehicle("vert", 130));
+
+    new Vehicle("blanc", 500, "Avion");
+    new Vehicle("rouge", 150);
+    new Vehicle("vert", 130);
+    new Vehicle("rouge", 600, "Avion");
+    new Vehicle("jaune", 200, "Moto");
 }
 
 function ShowVehicles()
@@ -108,13 +116,13 @@ function ShowVehicles()
     for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicules.
     {
         MyList.innerHTML += MyVehicle.Display(false) + MyVehicle.GetStatus(); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
-        MyTrack.innerHTML += "<i class='fas fa-" + MyVehicle.Symbol + "'></i></br>"; // Ajoute dynamiquement les véhicules.
+        MyTrack.innerHTML += "<i id='Icon" + MyVehicle.Id + "' class='fas fa-" + MyVehicle.Symbol + "'></i></br>"; // Ajoute dynamiquement les véhicules.
     }
 
-    // Pour bouger véhicules. Ajout de .Relative dans l'html
-    let Element = document.getElementById("Start");
-    VehiclePosition += 10;
-    Element.style.left = VehiclePosition + "px";
+    // // Pour bouger véhicules. Ajout de .Relative dans l'html
+    // let Element = document.getElementById("Start");
+    // VehiclePosition += 10;
+    // Element.style.left = VehiclePosition + "px";
 }
 
 function TraveledKm()
@@ -148,7 +156,10 @@ function Race()
 {
     MyList = document.getElementById("VehicleList");
     MyList.innerHTML = "";
+    
     MyDistance = document.getElementById("Distance");
+    RaceLength = MyDistance.value;
+    PixelByKm = (document.getElementById("Track").width - TrackDelta) / RaceLength;
 
     for(MyVehicle of Vehicles)
     {
@@ -159,7 +170,7 @@ function Race()
 
         MyList.innerHTML += MyVehicle.Display(true);
 
-        if (MyVehicle.TraveledDistance >= MyDistance.value)
+        if (MyVehicle.TraveledDistance >= RaceLength)
         {
             MyList.innerHTML += MyVehicle.Stop();
         }
@@ -226,18 +237,20 @@ function ChangeButtonAccessibility(Id, Status)
 
 
 
-let VehiclePosition = 0; // Cette fonction ne fait rien.
+// let VehiclePosition = 0; // Cette fonction ne fait rien.
 function Track()
 {
     // // let Element = document.getElementById("Track");
     // let MyFas = document.getElementsByClassName("fas");
     // // document.getElementsByClassName("fas").style.left = "50px";
 
-    // for (MyFas of Vehicles)
-    // {
-    //     VehiclePosition += 60;
-    //     MyFas.style.left = VehiclePosition + "px";
-    // }
+    for (MyVehicle of Vehicles)
+    {
+        VehicleIcon = document.getElementById("Icon" + MyVehicle.Id);
+        VehicleIcon.style.left = (MyVehicle.TraveledDistance * PixelByKm) + "px";
+    }
+
+    return
 
     // for (MyFas of Vehicles)
     // {
@@ -250,13 +263,21 @@ function Track()
 
 
     //Tentaive avec element.children
-    // let Myfas = document.getElementsByClassName("fas");
-    let Myfas = document.querySelector(".fas");
+    let Element = document.getElementById("Track");
+    let MyfasBis = document.getElementsByClassName("fas");
+    // alert(MyfasBis + "</br>" + MyfasBis.children);
+    for(Element of MyfasBis)
+    {
+        console.log(Element);
+    }
+
+
+    let Myfas = document.querySelector(".fas:nth-child(1)");
 
     for(Myfas.children of Vehicles)
     {
-        // alert(Myfas.children) // Affiche [object Object]
-        // alert(JSON.stringify(Myfas.children)); // Décrit l'objet en question
+        // alert(Myfas.children) // Affiche avec byclassname : [object Object]
+        // alert(JSON.stringify(Myfas.children)); // Décrit (avec byclassname) l'objet en question
         VehiclePosition += 6;
         Myfas.style.left = VehiclePosition +"px";
     }
