@@ -118,11 +118,6 @@ function ShowVehicles()
         MyList.innerHTML += MyVehicle.Display(false) + MyVehicle.GetStatus(); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
         MyTrack.innerHTML += "<i id='Icon" + MyVehicle.Id + "' class='fas fa-" + MyVehicle.Symbol + "'></i></br>"; // Ajoute dynamiquement les véhicules.
     }
-
-    // // Pour bouger véhicules. Ajout de .Relative dans l'html
-    // let Element = document.getElementById("Start");
-    // VehiclePosition += 10;
-    // Element.style.left = VehiclePosition + "px";
 }
 
 function TraveledKm()
@@ -162,6 +157,7 @@ function Race()
     PixelByKm = (document.getElementById("Track").width - TrackDelta) / RaceLength; // Rajouter + "px" après TrackDelta ?
 
     ChangeFormAccessibility("Distance", MyVehicle.TraveledDistance >= 1); // Form disable ou non
+
     for(MyVehicle of Vehicles)
     {
         if (MyVehicle.isEngineOn) // Ici True, puisque moteur on grâce à StartVehicles() 
@@ -252,20 +248,16 @@ function ChangeFormAccessibility(Id, Status)
 // let VehiclePosition = 0; // Cette fonction ne fait rien.
 function Track()
 {
-    // // let Element = document.getElementById("Track");
-    // let MyFas = document.getElementsByClassName("fas");
-    // // document.getElementsByClassName("fas").style.left = "50px";
-
-
-
-
+    MyDistance = document.getElementById("Distance");
+    RaceLength = MyDistance.value;
+    PixelByKm = (document.getElementById("Track").width - TrackDelta) / RaceLength;
 
     for (MyVehicle of Vehicles)
     {
-        VehicleIcon = document.getElementById("Icon" + MyVehicle.Id);
+        VehicleIcon = document.getElementById("Icon" + MyVehicle.Id);// "Icon" + MyVehicle.Id
         VehicleIcon.style.left = (MyVehicle.TraveledDistance * PixelByKm) + "px";
     }
-
+    // alert(VehicleIcon); // Affiche [object HTMLElement]
     return
 
 
