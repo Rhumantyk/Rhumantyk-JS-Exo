@@ -2,7 +2,7 @@
 let Vehicles = [];
 let RaceLength = 0;
 let PixelByKm = 0;
-const TrackDelta = 60;
+const TrackDelta = 60; // Espace par rapport au width.
 
 // classe
 class Vehicle
@@ -137,7 +137,7 @@ function TraveledKm()
 
 function StartVehicles()
 {
-    ChangeButtonAccessibility("Race", "On");
+    ChangeButtonAccessibility("Race", "On"); // Btn disable ou non
     ChangeButtonAccessibility("Start", "Off"); // L'ordre (sauf entre ()) importe peu
 
     MyList = document.getElementById("VehicleList");
@@ -159,8 +159,9 @@ function Race()
     
     MyDistance = document.getElementById("Distance");
     RaceLength = MyDistance.value;
-    PixelByKm = (document.getElementById("Track").width - TrackDelta) / RaceLength;
+    PixelByKm = (document.getElementById("Track").width - TrackDelta) / RaceLength; // Rajouter + "px" après TrackDelta ?
 
+    ChangeFormAccessibility("Distance", MyVehicle.TraveledDistance >= 1); // Form disable ou non
     for(MyVehicle of Vehicles)
     {
         if (MyVehicle.isEngineOn) // Ici True, puisque moteur on grâce à StartVehicles() 
@@ -178,7 +179,7 @@ function Race()
 }
 
 
-// Changement de classe CSS btn
+// Changement de classe CSS btn (function StartVehicles)
 function ChangeButtonAccessibility(Id, Status)
 {
     MyButton = document.getElementById(Id);
@@ -191,6 +192,23 @@ function ChangeButtonAccessibility(Id, Status)
     {
         MyButton.classList.add("ButtonOff");
         MyButton.disabled = true;
+    }
+}
+
+// Changement de classe CSS Form
+function ChangeFormAccessibility(Id, Status)
+{
+    MyButton = document.getElementById(Id);
+
+    if (Status = MyVehicle.TraveledDistance >= 1)
+    {
+        MyButton.classList.add("ButtonOff");
+        MyButton.disabled = true; // Disable le Form ici
+    }
+    else if (Status = MyVehicle.TraveledDistance = 0)
+    {
+        MyButton.classList.remove("ButtonOff");
+        MyButton.disabled = false; // Disable le Form ici
     }
 }
 
@@ -244,6 +262,10 @@ function Track()
     // let MyFas = document.getElementsByClassName("fas");
     // // document.getElementsByClassName("fas").style.left = "50px";
 
+
+
+
+
     for (MyVehicle of Vehicles)
     {
         VehicleIcon = document.getElementById("Icon" + MyVehicle.Id);
@@ -251,6 +273,17 @@ function Track()
     }
 
     return
+
+
+
+
+
+
+
+
+
+
+
 
     // for (MyFas of Vehicles)
     // {
