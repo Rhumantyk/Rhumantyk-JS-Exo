@@ -192,10 +192,10 @@ function ChangeButtonAccessibility(Id, Status)
 }
 
 // Changement de classe CSS Form via StartVehicles
-function ChangeFormAccessibility(Id, Status)
+function ChangeFormAccessibility(Id, _Status)
 {
     MyButton = document.getElementById(Id);
-    if (Status = "Off")
+    if (_Status = "Off")
     {
         MyButton.classList.add("ButtonOff");
         MyButton.disabled = true;
@@ -254,7 +254,7 @@ function Track()
 
     for (MyVehicle of Vehicles)
     {
-        VehicleIcon = document.getElementById("Icon" + MyVehicle.Id);// "Icon" + MyVehicle.Id
+        VehicleIcon = document.getElementById("Icon" + MyVehicle.Id);
         VehicleIcon.style.left = (MyVehicle.TraveledDistance * PixelByKm) + "px";
     }
     // alert(VehicleIcon); // Affiche [object HTMLElement]
