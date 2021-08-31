@@ -154,7 +154,7 @@ function Race()
     
     MyDistance = document.getElementById("Distance");
     RaceLength = MyDistance.value;
-    PixelByKm = (document.getElementById("Track").width - TrackDelta) / RaceLength; // Rajouter + "px" après TrackDelta ?
+    PixelByKm = (document.getElementById("Track").width - TrackDelta) / RaceLength;
 
     ChangeFormAccessibility("Distance", MyVehicle.TraveledDistance >= 1); // Form disable ou non
 
