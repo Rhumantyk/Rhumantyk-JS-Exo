@@ -251,68 +251,52 @@ function Track()
     MyDistance = document.getElementById("Distance");
     RaceLength = MyDistance.value;
     MyTrack = document.getElementById("Track");
-    MyTrackWidth = getComputedStyle(MyTrack).width.replace("px", "");
+    MyTrackWidth = getComputedStyle(MyTrack).width.replace("px", ""); // getcomputedstyle récupère tous les styleCSS non en dur(cf dynamique) avec le . style qu'on veut récupérer
     PixelByKm = (MyTrackWidth - TrackDelta) / RaceLength;
-    console.log
-    (
-        "document.getElementById('Track').id : " + document.getElementById("Track").id + "\n" +
-        "getComputedStyle('MyTrack').width : " + getComputedStyle(MyTrack).width + "\n" + // getcomputedstyle récupère tous les styleCSS non en dur(cf dynamique) avec le . style qu'on veut récupérer
-        "TrackDelta : " + TrackDelta + "\n" +
-        "RaceLength : " + RaceLength + "\n"
-    );
+    // console.log
+    // (
+    //     "document.getElementById('Track').id : " + document.getElementById("Track").id + "\n" +
+    //     "getComputedStyle('MyTrack').width : " + getComputedStyle(MyTrack).width + "\n" + 
+    //     "TrackDelta : " + TrackDelta + "\n" +
+    //     "RaceLength : " + RaceLength + "\n"
+    // );
 
     for (MyVehicle of Vehicles)
     {
         VehicleIcon = document.getElementById("Icon" + MyVehicle.Id);
         VehicleIcon.style.left = (MyVehicle.TraveledDistance * PixelByKm) + "px";
-        console.log(
-            "MyVehicle.TraveledDistance : " + MyVehicle.TraveledDistance + "\n" +
-            "PixelByKm : " + PixelByKm + "\n" +
-            "VehicleIcon.id : " + VehicleIcon.id + "\n" + // \n = espace
-            "VehicleIcon.style.left : " + VehicleIcon.style.left
-            );
+        // console.log(
+        //     "MyVehicle.TraveledDistance : " + MyVehicle.TraveledDistance + "\n" +
+        //     "PixelByKm : " + PixelByKm + "\n" +
+        //     "VehicleIcon.id : " + VehicleIcon.id + "\n" + // \n = espace
+        //     "VehicleIcon.style.left : " + VehicleIcon.style.left
+        //     );
+
+        if (VehicleIcon.style.left >= RaceLength)
+        {
+            VehicleIcon.style.left = RaceLength + "px" - RaceLength;
+        }
     }
-    
-    return
 
-
-
-
-
-
-
-
-
-
-
-
-    // for (MyFas of Vehicles)
+    // for(MyVehicle of Vehicles)
     // {
-    // if (MyVehicle.Symbol == "plane") // & MyVehicle.Speed == 600
+    //     if (VehicleIcon.style.left > RaceLength)
     //     {
-    //         VehiclePosition += 60;
-    //         MyFas.style.left = VehiclePosition + "px";
+    //         VehicleIcon.style.left = RaceLength;
     //     }
     // }
 
-
-    //Tentaive avec element.children
-    let Element = document.getElementById("Track");
-    let MyfasBis = document.getElementsByClassName("fas");
-    // alert(MyfasBis + "</br>" + MyfasBis.children);
-    for(Element of MyfasBis)
-    {
-        console.log(Element);
-    }
-
-
-    let Myfas = document.querySelector(".fas:nth-child(1)");
-
-    for(Myfas.children of Vehicles)
-    {
-        // alert(Myfas.children) // Affiche avec byclassname : [object Object]
-        // alert(JSON.stringify(Myfas.children)); // Décrit (avec byclassname) l'objet en question
-        VehiclePosition += 6;
-        Myfas.style.left = VehiclePosition +"px";
-    }
 }
+
+// function LimitTrack()
+// {
+//     MyDistance = document.getElementById("Distance");
+//     RaceLength = MyDistance.value;
+//     for (MyVehicle of Vehicles)
+//     {
+//         if(MyVehicle.TraveledDistance > RaceLength)
+//         {
+//             MyVehicle.TraveledDistance = RaceLength;
+//         }
+//     }
+// }
