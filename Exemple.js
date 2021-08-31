@@ -191,11 +191,11 @@ function ChangeButtonAccessibility(Id, Status)
     }
 }
 
-// Changement de classe CSS Form via StartVehicles
+// Changement de classe CSS Form (function StartVehicles)
 function ChangeFormAccessibility(Id, _Status)
 {
     MyButton = document.getElementById(Id);
-    if (_Status = "Off")
+    if (_Status == MyVehicle.TraveledDistance >= 1)
     {
         MyButton.classList.add("ButtonOff");
         MyButton.disabled = true;
