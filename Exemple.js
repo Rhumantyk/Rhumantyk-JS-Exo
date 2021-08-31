@@ -2,7 +2,7 @@
 let Vehicles = [];
 let RaceLength = 0;
 let PixelByKm = 0;
-const TrackDelta = 60; // Espace par rapport au width.
+const TrackDelta = 93; // Espace par rapport au width.
 
 // classe
 class Vehicle
@@ -116,7 +116,7 @@ function ShowVehicles()
     for(let MyVehicle of Vehicles) // Pour chaque véhicule (un élément de la class Vehicle) que j'appelle MyVehicle faisant partie de ma liste tableau de Vehicules.
     {
         MyList.innerHTML += MyVehicle.Display(false) + MyVehicle.GetStatus(); // Dans l'id HTML VehicleList, s'ajoutera (+=) les éléments suivants ...
-        MyTrack.innerHTML += "<i id='Icon" + MyVehicle.Id + "' class='fas fa-" + MyVehicle.Symbol + "'></i></br>"; // Ajoute dynamiquement les véhicules.
+        MyTrack.innerHTML += "<i id='Icon" + MyVehicle.Id + "' style='left: 0px;' class='fas fa-" + MyVehicle.Symbol + "'></i></br>"; // Ajoute dynamiquement les véhicules.
     }
 }
 
@@ -250,14 +250,29 @@ function Track()
 {
     MyDistance = document.getElementById("Distance");
     RaceLength = MyDistance.value;
-    PixelByKm = (document.getElementById("Track").width - TrackDelta) / RaceLength;
+    MyTrack = document.getElementById("Track");
+    MyTrackWidth = getComputedStyle(MyTrack).width.replace("px", "");
+    PixelByKm = (MyTrackWidth - TrackDelta) / RaceLength;
+    console.log
+    (
+        "document.getElementById('Track').id : " + document.getElementById("Track").id + "\n" +
+        "getComputedStyle('MyTrack').width : " + getComputedStyle(MyTrack).width + "\n" + // getcomputedstyle récupère tous les styleCSS non en dur(cf dynamique) avec le . style qu'on veut récupérer
+        "TrackDelta : " + TrackDelta + "\n" +
+        "RaceLength : " + RaceLength + "\n"
+    );
 
     for (MyVehicle of Vehicles)
     {
         VehicleIcon = document.getElementById("Icon" + MyVehicle.Id);
         VehicleIcon.style.left = (MyVehicle.TraveledDistance * PixelByKm) + "px";
+        console.log(
+            "MyVehicle.TraveledDistance : " + MyVehicle.TraveledDistance + "\n" +
+            "PixelByKm : " + PixelByKm + "\n" +
+            "VehicleIcon.id : " + VehicleIcon.id + "\n" + // \n = espace
+            "VehicleIcon.style.left : " + VehicleIcon.style.left
+            );
     }
-    // alert(VehicleIcon); // Affiche [object HTMLElement]
+    
     return
 
 
